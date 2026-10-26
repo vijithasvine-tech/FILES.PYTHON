@@ -1,1 +1,12 @@
+# Question 1
+### **Question:**
+** E-commerce Discount Calculator
+Scenario: An online store offers discounts based on the purchase amount:
+10% discount for purchases between $100 and $500
+20% discount for purchases above $500
+No discount for purchases below $100
+Write a program that takes the purchase amount as input and calculates the discount and final amount to be paid.**
 
+**Code:**
+Amount = float(int("Enter the amount:"))
+   
