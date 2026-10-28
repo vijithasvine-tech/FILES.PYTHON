@@ -8,5 +8,160 @@ No discount for purchases below $100
 Write a program that takes the purchase amount as input and calculates the discount and final amount to be paid.**
 
 **Code:**
-Amount = float(int("Enter the amount:"))
-   
+amount = float(input("Enter purchase amount: $"))
+if amount < 0:
+    print("Invalid purchase amount")
+elif amount < 100:
+    discount = 0
+elif amount <= 500:
+    discount = amount * 0.10
+else:
+    discount = amount * 0.20
+if amount >= 0:
+    final_amount = amount - discount
+    print(f"Discount: ${discount:.2f}")
+    print(f"Final amount: ${final_amount:.2f}")
+
+# Question 2
+### **Question:** 
+**Traffic Light Simulation
+Scenario: Create a program that simulates a traffic light. The user inputs one of the colors: Red, Yellow, or Green. Based on the input:
+If the input is Red, display "Stop."
+If the input is Yellow, display "Ready to move."
+If the input is Green, display "Go."
+For invalid input, display "Invalid color."**
+
+**Code:**
+color = input("Enter traffic light color: ").strip().lower()
+if color == "red":
+    print("Stop.")
+elif color == "yellow":
+    print("Ready to move.")
+elif color == "green":
+    print("Go.")
+else:
+    print("Invalid color.")
+
+
+# Question 3
+### **Question:** 
+**3. Grade Evaluation System
+Scenario: A school uses the following grading system:
+Marks >= 90: Grade A
+Marks >= 75 and < 90: Grade B
+Marks >= 50 and < 75: Grade C
+Marks < 50: Fail
+Task: Write a program that accepts the student's marks and displays their grade.**
+
+**Code:**
+marks = float(input("Enter student marks: "))
+if marks < 0 or marks > 100:
+    print("Invalid marks")
+elif marks >= 90:
+    print("Grade A")
+elif marks >= 75:
+    print("Grade B")
+elif marks >= 50:
+    print("Grade C")
+else:
+    print("Fail")
+
+# Question 4
+### **Question:** 
+**Odd or Even and Divisibility Check
+Scenario: Write a program that takes an integer as input and checks:
+Whether the number is odd or even
+Whether the number is divisible by 5
+Display appropriate messages for both conditions.**
+
+**Code:**
+num = int(input("Enter an integer: "))
+if num % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")
+
+if num % 5 == 0:
+    print("The number is divisible by 5.")
+else:
+    print("The number is not divisible by 5.")
+
+# Question 5
+### **Question:** 
+**Password Strength Checker
+Scenario: Write a program that checks the strength of a password based on these rules:
+Length >= 8 characters: Strong
+Length between 5 and 7 characters: Medium
+Length < 5 characters: Weak
+
+**Code:**
+password = input("Enter a password: ")
+length = len(password)
+if length >= 8:
+    print("Strong password")
+elif length >= 5:
+    print("Medium password")
+else:
+    print("Weak password")
+
+# Question 6
+### **Question:** 
+**Electricity Bill Calculator
+Scenario: An electricity company charges its customers as follows:
+First 100 units: $0.5 per unit
+Next 100 units (101-200): $0.75 per unit
+Above 200 units: $1 per unit
+Task: Write a program that accepts the number of units consumed and calculates the total bill.**
+
+**Code:**
+units = float(input("Enter electricity units consumed: "))
+if units < 0:
+    print("Invalid units")
+else:
+    if units <= 100:
+        bill = units * 0.50
+    elif units <= 200:
+        bill = (100 * 0.50) + ((units - 100) * 0.75)
+    else:
+        bill = (100 * 0.50) + (100 * 0.75) + ((units - 200) * 1.00)
+
+    print(f"Total electricity bill: ${bill:.2f}")
+
+# Question 7
+### **Question:** 
+**Eligibility for Loan Approval
+Scenario: A bank approves loans based on these conditions:
+Age should be between 21 and 60
+Monthly income should be greater than or equal to $5000
+Task: Write a program to check whether a person is eligible for the loan based on their age and monthly income.**
+
+**Code:**
+age = int(input("Enter your age: "))
+income = float(input("Enter monthly income: $"))
+if age < 0 or income < 0:
+    print("Invalid input")
+elif 21 <= age <= 60 and income >= 5000:
+    print("Eligible for loan")
+else:
+    print("Not eligible for loan")
+
+# Question 8
+### **Question:**
+**Temperature Alert System
+Scenario: A weather monitoring system alerts based on the temperature:
+Below 0°C: "Freezing weather"
+0°C to 20°C: "Cold weather"
+21°C to 30°C: "Warm weather"
+Above 30°C: "Hot weather"
+Task: Write a program that takes the temperature as input and displays the corresponding alert message.**
+
+**Code:**
+temperature = float(input("Enter temperature in Celsius: "))
+if temperature < 0:
+    print("Freezing weather")
+elif temperature <= 20:
+    print("Cold weather")
+elif temperature <= 30:
+    print("Warm weather")
+else:
+    print("Hot weather")
