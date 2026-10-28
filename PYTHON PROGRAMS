@@ -165,3 +165,266 @@ elif temperature <= 30:
     print("Warm weather")
 else:
     print("Hot weather")
+
+# Question 9
+### **Question:**
+**Leap Year Checker
+Accept a year. First check whether it is divisible by 4. If yes, check whether it is divisible by 100. 
+If it is, check whether it is divisible by 400. Display whether the year is a leap year.**
+
+**Code:**
+year = int(input("Enter a year: "))
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print("Leap year")
+        else:
+            print("Not a leap year")
+    else:
+        print("Leap year")
+else:
+    print("Not a leap year")
+
+# Question 10
+### **Question:**
+**Triangle Classification
+Accept three side lengths. First check whether they can form a valid triangle. 
+If valid, check whether all three sides are equal, exactly two sides are equal, or all sides are different.**
+
+**Code:**
+a = float(input("Enter first side: "))
+b = float(input("Enter second side: "))
+c = float(input("Enter third side: "))
+if a <= 0 or b <= 0 or c <= 0:
+    print("Invalid triangle")
+elif a + b <= c or a + c <= b or b + c <= a:
+    print("Invalid triangle")
+elif a == b == c:
+    print("Equilateral triangle")
+elif a == b or b == c or a == c:
+    print("Isosceles triangle")
+else:
+    print("Scalene triangle")
+
+# Question 11
+### **Question:**
+**Employee Bonus Calculator
+Accept years of experience and performance rating. If experience is at least 5 years, check the rating. 
+Give a 20% bonus for an excellent rating and 10% for a good rating. If experience is below 5 years, 
+give a 5% bonus only for an excellent rating.**
+
+**Code:**
+experience = float(input("Enter years of experience: "))
+rating = input("Enter rating (excellent/good/other): ").strip().lower()
+salary = float(input("Enter annual salary: "))
+if experience < 0 or salary < 0:
+    print("Invalid input")
+else:
+    if experience >= 5:
+        if rating == "excellent":
+            bonus_rate = 20
+        elif rating == "good":
+            bonus_rate = 10
+        else:
+            bonus_rate = 0
+    else:
+        if rating == "excellent":
+            bonus_rate = 5
+        else:
+            bonus_rate = 0
+
+    bonus = salary * bonus_rate / 100
+
+    print("Bonus rate:", str(bonus_rate) + "%")
+    print(f"Bonus amount: {bonus:.2f}")
+
+# Question 12
+### **Question:**
+**Password Strength Checker
+Accept a password. If its length is at least 8 characters, check whether it contains a digit. 
+If it does, check whether it contains an uppercase letter. Classify it as strong or moderate based on these conditions. 
+Otherwise, classify it as weak.**
+
+**Code:**
+password = input("Enter a password: ")
+if len(password) >= 8:
+    has_digit = any(ch.isdigit() for ch in password)
+
+    if has_digit:
+        has_uppercase = any(ch.isupper() for ch in password)
+
+        if has_uppercase:
+            print("Strong password")
+        else:
+            print("Moderate password")
+    else:
+        print("Weak password")
+else:
+    print("Weak password")
+
+# Question 13
+### **Question:**
+**Hospital Consultation Priority
+Accept a patient's temperature and oxygen saturation. If oxygen saturation is below 90%, classify as high priority. 
+Otherwise, check whether the temperature is at least 39°C. If so, classify as urgent; otherwise, classify as normal priority. 
+(Simplified programming exercise, not a medical triage tool.)**
+
+**Code:**
+temperature = float(input("Enter temperature in Celsius: "))
+oxygen = float(input("Enter oxygen saturation (%): "))
+if not 0 <= oxygen <= 100:
+    print("Invalid oxygen saturation")
+elif oxygen < 90:
+    print("High priority")
+elif temperature >= 39:
+    print("Urgent")
+else:
+    print("Normal priority")
+
+# Question 14
+### **Question:**
+**Income Tax Slab Calculator
+Accept annual taxable income. If income is up to ₹3 lakh, tax is 0%. Otherwise, 
+check whether it is up to ₹7 lakh and apply a 5% rate to income above ₹3 lakh. 
+For income above ₹7 lakh, apply progressive slabs of 0%, 5%, and 10% to the respective portions. Calculate the total tax.**
+
+**Code:**
+income = float(input("Enter annual taxable income (₹): "))
+if income < 0:
+    print("Invalid income")
+elif income <= 300000:
+    tax = 0
+elif income <= 700000:
+    tax = (income - 300000) * 0.05
+else:
+    tax = (400000 * 0.05) + ((income - 700000) * 0.10)
+
+print(f"Tax payable: ₹{tax:.2f}") if income >= 0 else None
+
+# Question 15
+### **Question:**
+**College Admission
+Accept marks in Mathematics, Physics, and Chemistry. If Mathematics is at least 60, check Physics. 
+If Physics is at least 50, check Chemistry. If Chemistry is at least 50 and the total is at least 180, 
+display "Eligible"; otherwise, display "Not Eligible".**
+
+**Code:**
+maths = float(input("Enter Mathematics marks: "))
+physics = float(input("Enter Physics marks: "))
+chemistry = float(input("Enter Chemistry marks: "))
+if not all(0 <= mark <= 100 for mark in [maths, physics, chemistry]):
+    print("Invalid marks")
+elif maths >= 60:
+    if physics >= 50:
+        if chemistry >= 50:
+            total = maths + physics + chemistry
+
+            if total >= 180:
+                print("Eligible")
+            else:
+                print("Not Eligible")
+        else:
+            print("Not Eligible")
+    else:
+        print("Not Eligible")
+else:
+    print("Not Eligible")
+
+# Question 16
+### **Question:**
+**Online Food Delivery
+Accept order amount, distance, and whether the customer has a membership. 
+If the order amount is at least ₹500, check whether the distance is within 5 km. 
+Apply free delivery if within 5 km; otherwise, charge ₹40. If the order is below ₹500, 
+check membership status and calculate delivery charges accordingly.**
+
+**Code:**
+amount = float(input("Enter order amount (₹): "))
+distance = float(input("Enter delivery distance (km): "))
+membership = input("Do you have membership? (yes/no): ").strip().lower()
+if amount < 0 or distance < 0:
+    print("Invalid order details")
+elif membership not in ("yes", "no"):
+    print("Invalid membership status")
+else:
+    if amount >= 500:
+        if distance <= 5:
+            delivery = 0
+        else:
+            delivery = 40
+    else:
+        if membership == "yes":
+            delivery = 10 if distance <= 5 else 20
+        else:
+            delivery = 30 if distance <= 5 else 40
+
+    total = amount + delivery
+    print(f"Delivery charge: ₹{delivery:.2f}")
+    print(f"Total amount: ₹{total:.2f}")
+
+# Question 17
+### **Question:**
+**Insurance Premium Category
+Accept age, smoking status, and annual income. If the applicant is under 30, check smoking status to determine the risk category. 
+If age is 30 or above, check income and smoking status to classify the applicant as low, medium, or high risk. 
+Define your own clear rules for each category.**
+
+**Code:**
+age = int(input("Enter age: "))
+smoking = input("Do you smoke? (yes/no): ").strip().lower()
+income = float(input("Enter annual income (₹): "))
+if age <= 0 or income < 0:
+    print("Invalid input")
+elif smoking not in ("yes", "no"):
+    print("Invalid smoking status")
+elif age < 30:
+    if smoking == "yes":
+        print("Medium risk")
+    else:
+        print("Low risk")
+else:
+    if income < 500000:
+        print("High risk")
+    elif smoking == "yes":
+        print("High risk")
+    else:
+        print("Low risk")
+
+# Question 18
+### **Question:**
+**Mini Banking System
+Accept account type, account balance, and transaction type (deposit or withdrawal). If the account type is savings, 
+check the transaction type. For withdrawals, check minimum balance requirements; for deposits, validate the deposit amount. 
+If the account type is current, apply a different minimum balance rule.**
+
+**Code:**
+account_type = input("Enter account type (savings/current): ").strip().lower()
+balance = float(input("Enter current balance (₹): "))
+transaction = input("Enter transaction (deposit/withdrawal): ").strip().lower()
+if account_type not in ("savings", "current"):
+    print("Invalid account type")
+elif balance < 0:
+    print("Invalid balance")
+elif transaction not in ("deposit", "withdrawal"):
+    print("Invalid transaction type")
+else:
+    amount = float(input("Enter transaction amount (₹): "))
+
+    if amount <= 0:
+        print("Amount must be positive")
+    elif transaction == "deposit":
+        balance += amount
+        print("Deposit successful")
+        print(f"Updated balance: ₹{balance:.2f}")
+    else:
+        if account_type == "savings":
+            minimum_balance = 1000
+        else:
+            minimum_balance = 5000
+
+        if balance - amount >= minimum_balance:
+            balance -= amount
+            print("Withdrawal successful")
+            print(f"Updated balance: ₹{balance:.2f}")
+        else:
+            print("Insufficient funds or minimum balance violation")
